@@ -1,15 +1,11 @@
 {
   "$schema": "https://nitro.margelo.com/nitro.schema.json",
-  "cxxNamespace": [
-    "nitrotimer"
-  ],
+  "cxxNamespace": ["nitrotimer"],
   "ios": {
     "iosModuleName": "NitroTimer"
   },
   "android": {
-    "androidNamespace": [
-      "nitrotimer"
-    ],
+    "androidNamespace": ["nitrotimer"],
     "androidCxxLibName": "NitroTimer"
   },
   "autolinking": {
@@ -18,7 +14,5 @@
       "kotlin": "HybridNitroTimer"
     }
   },
-  "ignorePaths": [
-    "**/node_modules"
-  ]
+  "ignorePaths": ["**/node_modules"]
 }

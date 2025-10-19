@@ -1,1 +1,1 @@
-module.exports = require('./plugin/build/withNitroTimer');
+module.exports = require("./plugin/build/withNitroTimer");

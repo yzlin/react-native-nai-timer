@@ -1,12 +1,12 @@
 import type { HybridObject } from "react-native-nitro-modules";
 
 export interface NitroTimer
-	extends HybridObject<{ ios: "swift"; android: "kotlin" }> {
-	setTimeout(callback: (id: number) => void, delay: number): number;
-	clearTimeout(id: number): void;
+  extends HybridObject<{ ios: "swift"; android: "kotlin" }> {
+  setTimeout(callback: (id: number) => void, delay: number): number;
+  clearTimeout(id: number): void;
 
-	setInterval(callback: (id: number) => void, interval: number): number;
-	clearInterval(id: number): void;
+  setInterval(callback: (id: number) => void, interval: number): number;
+  clearInterval(id: number): void;
 
-	clearAllTimers(): void;
+  clearAllTimers(): void;
 }
