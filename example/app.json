@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "nitrotimer-example",
-    "slug": "nitrotimer-example",
+    "name": "naitimer-example",
+    "slug": "naitimer-example",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "nitrotimerexample",
+    "scheme": "naitimerexample",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yzlin.nitrotimerexample"
+      "bundleIdentifier": "com.yzlin.naitimerexample"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +21,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.yzlin.nitrotimerexample"
+      "package": "com.yzlin.naitimerexample"
     },
     "plugins": [
       "expo-router",
@@ -38,7 +38,7 @@
         }
       ],
       "expo-dev-client",
-      "react-native-nitro-timer"
+      "react-native-nai-timer"
     ],
     "experiments": {
       "typedRoutes": true,

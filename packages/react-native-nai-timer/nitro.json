@@ -1,0 +1,18 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": ["naitimer"],
+  "ios": {
+    "iosModuleName": "NaiTimer"
+  },
+  "android": {
+    "androidNamespace": ["naitimer"],
+    "androidCxxLibName": "NaiTimer"
+  },
+  "autolinking": {
+    "NaiTimer": {
+      "swift": "HybridNaiTimer",
+      "kotlin": "HybridNaiTimer"
+    }
+  },
+  "ignorePaths": ["**/node_modules"]
+}

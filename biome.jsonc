@@ -104,7 +104,7 @@
     {
       "includes": [
         "**/*.nitro.ts",
-        "packages/react-native-nitro-timer/plugin/**/*.ts",
+        "packages/react-native-nai-timer/plugin/**/*.ts",
       ],
       "linter": {
         "rules": {

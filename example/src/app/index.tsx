@@ -1,21 +1,21 @@
 import { useEffect } from "react";
 import { Text, View } from "react-native";
-import { NitroTimer } from "react-native-nitro-timer";
+import { NaiTimer } from "react-native-nai-timer";
 
 export default function Page() {
   useEffect(() => {
-    NitroTimer.setInterval(() => {
-      console.log("Nitro Timer Interval Triggered");
+    NaiTimer.setInterval(() => {
+      console.log("Nai Timer Interval Triggered");
     }, 1000);
 
     return () => {
-      NitroTimer.clearAllTimers();
+      NaiTimer.clearAllTimers();
     };
   }, []);
 
   return (
     <View>
-      <Text>Welcome to React Native Nitro Timer!</Text>
+      <Text>Welcome to React Native Nai Timer!</Text>
     </View>
   );
 }

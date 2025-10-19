@@ -1,18 +1,18 @@
 {
-  "name": "react-native-nitro-timer-monorepo",
+  "name": "react-native-nai-timer-monorepo",
   "private": true,
   "version": "0.0.0",
-  "repository": "https://github.com/yzlin/react-native-nitro-timer.git",
+  "repository": "https://github.com/yzlin/react-native-nai-timer.git",
   "author": "Ethan Lin <yzlin1985@gmail.com> (https://github.com/yzlin)",
   "workspaces": [
     "example",
     "packages/*"
   ],
   "scripts": {
-    "build": "bun run --cwd packages/react-native-nitro-timer build",
-    "specs": "bun run --cwd packages/react-native-nitro-timer specs",
+    "build": "bun run --cwd packages/react-native-nai-timer build",
+    "specs": "bun run --cwd packages/react-native-nai-timer specs",
     "typecheck": "bun --filter=\"**\" typecheck",
-    "lint": "bun --cwd packages/react-native-nitro-timer lint",
+    "lint": "bun --cwd packages/react-native-nai-timer lint",
     "release": "./scripts/release.sh",
     "example": "bun --cwd example"
   },
@@ -45,7 +45,7 @@
       "@release-it/bumper": {
         "out": [
           {
-            "file": "packages/react-native-nitro-timer/package.json",
+            "file": "packages/react-native-nai-timer/package.json",
             "path": "version"
           },
           {
