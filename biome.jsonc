@@ -65,7 +65,10 @@
         },
       },
       "correctness": {
-        "noUnusedImports": "error",
+        "noUnusedImports": {
+          "level": "error",
+          "fix": "safe",
+        },
         "useExhaustiveDependencies": "off",
       },
       "nursery": {
