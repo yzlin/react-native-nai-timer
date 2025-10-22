@@ -16,7 +16,7 @@
     },
     "example": {
       "name": "nai-timer-example",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "dependencies": {
         "@expo/vector-icons": "^15.0.2",
         "@react-navigation/bottom-tabs": "^7.4.0",
@@ -55,7 +55,7 @@
     },
     "packages/react-native-nai-timer": {
       "name": "react-native-nai-timer",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "devDependencies": {
         "@biomejs/biome": "2.2.6",
         "@tsconfig/react-native": "^3.0.7",

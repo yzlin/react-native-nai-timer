@@ -1,7 +1,7 @@
 {
   "name": "react-native-nai-timer-monorepo",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": "https://github.com/yzlin/react-native-nai-timer.git",
   "author": "Ethan Lin <yzlin1985@gmail.com> (https://github.com/yzlin)",
   "workspaces": [
