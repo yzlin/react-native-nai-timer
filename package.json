@@ -1,7 +1,7 @@
 {
   "name": "react-native-nai-timer-monorepo",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.2.0",
   "repository": "https://github.com/yzlin/react-native-nai-timer.git",
   "author": "Ethan Lin <yzlin1985@gmail.com> (https://github.com/yzlin)",
   "workspaces": [
@@ -39,7 +39,7 @@
       "release": true
     },
     "hooks": {
-      "before:release": "bun i && bun run build && bun example pods && git add example/ios/Podfile.lock"
+      "before:release": "bun i && bun run build"
     },
     "plugins": {
       "@release-it/bumper": {
