@@ -3,8 +3,8 @@ import NitroModules
 class HybridNaiTimer: HybridNaiTimerSpec {
   private var bgTask: UIBackgroundTaskIdentifier = .invalid
 
-  private var timeoutTimers: [Int: Timer] = [:]
-  private var intervalTimers: [Int: Timer] = [:]
+  private var timeoutTimers: [Int: DispatchSourceTimer] = [:]
+  private var intervalTimers: [Int: DispatchSourceTimer] = [:]
   private let serialQueue = DispatchQueue(label: "com.yzlin.naitimer.queue", qos: .userInitiated)
 
   private let idLock = NSLock()
@@ -49,24 +49,23 @@ class HybridNaiTimer: HybridNaiTimerSpec {
     serialQueue.async { [weak self] in
       guard let self = self else { return }
 
-      DispatchQueue.main.async {
-        self.acquireBackgroundTask()
+      self.acquireBackgroundTask()
 
-        let timer = Timer.scheduledTimer(withTimeInterval: delay / 1000.0, repeats: false) { [weak self] _ in
-          guard let self = self else { return }
+      let timer = DispatchSource.makeTimerSource(queue: self.serialQueue)
+      timer.schedule(deadline: .now() + delay / 1000.0)
+      timer.setEventHandler { [weak self] in
+        guard let self = self else { return }
 
-          callback(Double(timerId))
+        callback(Double(timerId))
 
-          self.serialQueue.async {
-            DispatchQueue.main.async {
-              self.timeoutTimers.removeValue(forKey: timerId)
-              self.releaseBackgroundTaskIfNeeded()
-            }
-          }
+        self.serialQueue.async {
+          self.timeoutTimers[timerId]?.cancel()
+          self.timeoutTimers.removeValue(forKey: timerId)
+          self.releaseBackgroundTaskIfNeeded()
         }
-
-        self.timeoutTimers[timerId] = timer
       }
+      self.timeoutTimers[timerId] = timer
+      timer.resume()
     }
 
     return Double(timerId)
@@ -78,12 +77,10 @@ class HybridNaiTimer: HybridNaiTimerSpec {
     serialQueue.async { [weak self] in
       guard let self = self else { return }
 
-      DispatchQueue.main.async {
-        if let timer = self.timeoutTimers[timerId] {
-          timer.invalidate()
-          self.timeoutTimers.removeValue(forKey: timerId)
-          self.releaseBackgroundTaskIfNeeded()
-        }
+      if let timer = self.timeoutTimers[timerId] {
+        timer.cancel()
+        self.timeoutTimers.removeValue(forKey: timerId)
+        self.releaseBackgroundTaskIfNeeded()
       }
     }
   }
@@ -94,17 +91,18 @@ class HybridNaiTimer: HybridNaiTimerSpec {
     serialQueue.async { [weak self] in
       guard let self = self else { return }
 
-      DispatchQueue.main.async {
-        self.acquireBackgroundTask()
+      self.acquireBackgroundTask()
 
-        let timer = Timer.scheduledTimer(withTimeInterval: interval / 1000.0, repeats: true) { [weak self] _ in
-          guard let self = self else { return }
-
-          callback(Double(timerId))
-        }
-
-        self.intervalTimers[timerId] = timer
+      let timer = DispatchSource.makeTimerSource(queue: self.serialQueue)
+      timer.schedule(deadline: .now() + interval / 1000.0,
+                     repeating: interval / 1000.0)
+      timer.setEventHandler { [weak self] in
+        guard let _ = self else { return }
+        callback(Double(timerId))
       }
+
+      self.intervalTimers[timerId] = timer
+      timer.resume()
     }
 
     return Double(timerId)
@@ -116,30 +114,28 @@ class HybridNaiTimer: HybridNaiTimerSpec {
     serialQueue.async { [weak self] in
       guard let self = self else { return }
 
-      DispatchQueue.main.async {
-        if let timer = self.intervalTimers[timerId] {
-          timer.invalidate()
-          self.intervalTimers.removeValue(forKey: timerId)
-          self.releaseBackgroundTaskIfNeeded()
-        }
+      if let timer = self.intervalTimers[timerId] {
+        timer.cancel()
+        self.intervalTimers.removeValue(forKey: timerId)
+        self.releaseBackgroundTaskIfNeeded()
       }
     }
   }
 
   func clearAllTimers() throws {
-    serialQueue.sync {
-      DispatchQueue.main.sync {
-        // Invalidate all timers
-        timeoutTimers.values.forEach { $0.invalidate() }
-        intervalTimers.values.forEach { $0.invalidate() }
+    serialQueue.async { [weak self] in
+      guard let self = self else { return }
 
-        // Clear collections
-        timeoutTimers.removeAll()
-        intervalTimers.removeAll()
+      // Invalidate all timers
+      self.timeoutTimers.values.forEach { $0.cancel() }
+      self.intervalTimers.values.forEach { $0.cancel() }
 
-        // Release background task
-        releaseBackgroundTask()
-      }
+      // Clear collections
+      self.timeoutTimers.removeAll()
+      self.intervalTimers.removeAll()
+
+      // Release background task
+      self.releaseBackgroundTask()
     }
   }
 

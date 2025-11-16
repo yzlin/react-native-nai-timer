@@ -47,8 +47,7 @@
     "lint": "biome check . --fix",
     "lint-ci": "biome check .",
     "release": "release-it",
-    "typescript": "tsc",
-    "specs": "typescript && nitrogen --logLevel=\"debug\""
+    "specs": "tsc && nitrogen --logLevel=\"debug\""
   },
   "keywords": [
     "react-native",
@@ -79,7 +78,7 @@
     "react-native": "0.82.0",
     "react-native-builder-bob": "^0.40.13",
     "react-native-nitro-modules": "*",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.3",
     "ultracite": "5.6.2"
   },
   "peerDependencies": {
