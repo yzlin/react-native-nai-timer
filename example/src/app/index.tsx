@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { NaiTimer } from "react-native-nai-timer";
 
 export default function Page() {
@@ -14,8 +14,9 @@ export default function Page() {
   }, []);
 
   return (
-    <View>
+    <ScrollView>
       <Text>Welcome to React Native Nai Timer!</Text>
-    </View>
+      <View style={{ height: 1000, backgroundColor: "green" }} />
+    </ScrollView>
   );
 }
