@@ -14,6 +14,9 @@
     "codegen": "bun run specs && cd example && pod --project-directory=ios install",
     "typecheck": "bun --filter=\"**\" typecheck",
     "lint": "bun --cwd packages/react-native-nai-timer lint",
+    "prebuild": "bun --cwd example prebuild",
+    "pods": "bun --cwd example pods",
+    "android:gradle": "bun --cwd example android:gradle",
     "release": "./scripts/release.sh",
     "example": "bun --cwd example"
   },
@@ -73,7 +76,7 @@
             },
             {
               "type": "chore(deps)",
-              "section": "🛠️ Dependency Upgrades"
+              "section": "🛠 Dependency Upgrades"
             },
             {
               "type": "docs",
