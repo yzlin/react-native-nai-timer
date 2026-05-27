@@ -25,6 +25,7 @@
     "@release-it-plugins/workspaces": "^5.0.3",
     "@release-it/bumper": "^7.0.5",
     "@release-it/conventional-changelog": "^10.0.1",
+    "lru-cache": "10.4.3",
     "prettier": "^3.6.2",
     "react-native-builder-bob": "^0.40.13",
     "release-it": "^19.0.5",
