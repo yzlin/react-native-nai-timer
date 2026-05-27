@@ -1,7 +1,7 @@
 {
   "name": "nai-timer-example",
   "main": "expo-router/entry",
-  "version": "0.3.0",
+  "version": "0.2.4",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
@@ -36,7 +36,7 @@
     "react-native": "0.85.3",
     "react-native-gesture-handler": "~2.31.1",
     "react-native-nai-timer": "../packages/react-native-nai-timer",
-    "react-native-nitro-modules": "^0.30.2",
+    "react-native-nitro-modules": "^0.35.7",
     "react-native-reanimated": "4.3.1",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "4.25.2",

@@ -6,7 +6,7 @@ Native timer module for React Native apps using Nitro Modules.
 
 - Expo SDK 56 and newer
 - iOS and Android native builds
-- Requires `react-native-nitro-modules`
+- Requires `react-native-nitro-modules` 0.35.7 or newer
 - Not supported in Expo Go because this package includes native code
 
 ## Installation

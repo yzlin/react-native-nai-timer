@@ -1,7 +1,7 @@
 {
   "name": "react-native-nai-timer-monorepo",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.2.4",
   "repository": "https://github.com/yzlin/react-native-nai-timer.git",
   "author": "Ethan Lin <yzlin1985@gmail.com> (https://github.com/yzlin)",
   "workspaces": [
@@ -17,6 +17,7 @@
     "prebuild": "bun --cwd example prebuild",
     "pods": "bun --cwd example pods",
     "android:gradle": "bun --cwd example android:gradle",
+    "check:nitro-generated-android": "node scripts/check-nitro-generated-android.js",
     "release": "./scripts/release.sh",
     "example": "bun --cwd example"
   },
